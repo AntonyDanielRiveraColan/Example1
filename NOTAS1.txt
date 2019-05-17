@@ -1,0 +1,106 @@
+// Para ver la version instalada 
+git --version
+
+//Configurar git en una maquina 
+git config --global user.name "Antony Rivera"
+git config --global user.email "alcom13000@gmail.com"
+
+//Para revisar las credenciales
+git config --global -l
+
+//Para direccionar el bash en una ruta determinada 
+echo cd desktop/ >> ~/.bashrc
+
+//Para cerrar 
+logout
+
+//Para direccionar la carpeta deseada 
+cd git/sitio
+
+//Iniciamos esa carpeta como repositorio = proyecto 
+git init
+
+//Para ver los archivos que no estan confirmado es decir no guardados se marcan en rojo
+git status
+
+//Para confirmar los archivos se pinta de verde (stage)
+git add .
+	//Variaciones del git add.
+		git add index.html //solo un archivo
+		git add js/ 	//cambios dentro de una carpeta
+		git add js/*.css //dentro de una carpeta solo confirma lo de cierta extencion
+		git add -A // para agregar todo
+		git add --all// para agregar todo
+
+//Para confirma los archivos
+git commit -m "Commit Inicial"
+
+//Si quiero saber donde se realizo una modificacion 
+git diff
+
+//Si quiero regresa hasta antes de que realizara algun cambio o saltar de rama en rama 
+git checkout .
+
+//Para ver el historico de cambios realizado
+git log
+
+//Para dar un paso atras del stage
+git reset js/*.scss
+git reset --soft // para regresar sin recuperar archivos
+
+//Para obtener ayuda
+git help
+
+============================================ Como indicar apodos a los comandos ================
+git config --global alias.l "log" //el comando log ahora sera  git l
+git config --global alias.s "status" //el comando status ahora sera  git s
+==================================================================================================
+
+//Para realizar una modificacion al ultimo mensaje 
+git commit --amend -m "Nuevo modificacaion"
+
+//Para cambiar nombre de un archivo 
+git principal.html princ.html
+
+//Para eliminar un archivo 
+git rm principal.html
+
+//Para ver el historial de cambios 
+git reflog
+
+//Para ir a un punto del historioco 
+git reset --hard 5ce3fd6
+
+//Para crear una rama 
+git branch nombreDeLaRama
+
+//Para unir ramas te situas en la rama principal 
+git merge nombreDeLaRama
+
+//Para eliminar alguna de las ramas creadas
+git branch -d nombreDeLaRama
+
+//Agregar etiquetas al commit
+git tag NombreDeEtiqueta
+
+//Para eliminar la etiqueda del commit 
+git tag -d NombreDeEtiqueta
+
+//Para unir con github
+git remote add origin https://github.com/AntonyDanielRiveraColan/demo-repo.git   //primer paso
+
+//Confirmacion para subir todo github
+git push -u origin master   //segundo paso
+
+//Para clonar en una carpeta vacia un repositorio existente 
+git clone url
+
+//Para subir los cambios que se realizan 
+ git add .
+ git commit -m "mensaje deseado"
+ git push -u origin master 
+
+//Si se cambia algo en el repositorio y quieres reflejarlo en el proyecto descargado 
+ git pull
+
+//
