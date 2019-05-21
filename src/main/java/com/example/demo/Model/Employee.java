@@ -2,13 +2,13 @@ package com.example.demo.Model;
 
 import javax.persistence.*;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 public class Employee {
-
-
 
     @Id
     @GeneratedValue

@@ -2,8 +2,8 @@ package com.example.demo;
 
 import com.example.demo.Model.Department;
 import com.example.demo.Model.Employee;
-import com.example.demo.Repository.DepartmentRepository;
-import com.example.demo.Repository.EmployeeRepository;
+import com.example.demo.Repository.H2.DepartmentRepository;
+import com.example.demo.Repository.H2.EmployeeRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

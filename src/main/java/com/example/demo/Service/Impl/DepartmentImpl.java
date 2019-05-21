@@ -1,7 +1,6 @@
 package com.example.demo.Service.Impl;
 
 import com.example.demo.Model.Department;
-import com.example.demo.Repository.DepartmentRepository;
 import com.example.demo.Repository.DepartmentRepository2;
 import com.example.demo.Service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
