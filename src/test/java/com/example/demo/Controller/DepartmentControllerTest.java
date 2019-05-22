@@ -2,48 +2,61 @@ package com.example.demo.Controller;
 
 import com.example.demo.Model.Department;
 import com.example.demo.Service.DepartmentService;
-import org.junit.Before;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
-import static org.junit.Assert.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
+@WebMvcTest(DepartmentController.class)
 public class DepartmentControllerTest {
 
-    private MockMvc mockMvc;
+    @Autowired
+    private MockMvc mvc;
 
-    @InjectMocks
-    private Department department;
-
-    @Before
-    public void setUp() throws Exception {
-
-    }
+    @MockBean
+    private DepartmentService service;
 
     @Test
     public void getAllDepartment() throws Exception {
-        //completar el comentario de abajo
-   // mockMvc = MockMvcBuilders.standaloneSetup()
+
+        List<Department> list = new ArrayList<>();
+        given(service.getAllDepartment()).willReturn(list);
+
+        this.mvc.perform(get("/departmentApi/v1/read"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[]"));
+
+        /*this.mvc.perform(get("/departmentApi/v1/read"))
+                .andExpect(status().isNotFound())
+                .andReturn ();*/
 
     }
 
     @Test
     public void addDepartment() throws Exception {
+
+        service.addDepartment(new Department());
+
+        this.mvc.perform(post("/departmentApi/v1/create/")
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(asJsonString(new Department())))
+                .andExpect(status().isCreated());
 
     }
 
@@ -53,5 +66,13 @@ public class DepartmentControllerTest {
 
     @Test
     public void deleteDepartment() {
+    }
+
+    public static String asJsonString(Object object) {
+        try {
+            return new ObjectMapper().writeValueAsString(object);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

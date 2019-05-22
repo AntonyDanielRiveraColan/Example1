@@ -1,0 +1,7 @@
+INSERT INTO Department VALUES(default,'Administracion','Torre 1'),
+(default,'Contabilidad','Torre 2'),(default,'Desarrollo','Torre 3');
+
+INSERT INTO Employee VALUES(default,'48123738','Sofia','1200.00','978255384','1','Jose Perez'),
+(default,'48149748','Maria Jose','1200.00','978255684','1','Pedro Sosa'),
+(default,'48145738','Jose Maria','1220.00','978265384','2','Felipe Lopez');
+

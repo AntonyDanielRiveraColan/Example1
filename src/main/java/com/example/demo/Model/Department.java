@@ -8,17 +8,18 @@ import javax.persistence.*;
 
 @Entity
 @Data
+@Table(name = "department")
 public class Department {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_dep")
     private int idDep;
 
-
-    @Column(name = "nameDep ")
+    @Column(name = "name_dep")
     private String nameDep;
 
-    @Column(name = "locationDep ")
+    @Column(name = "ubi_dep")
     private String locationDep;
 
     public Department(String nameDep, String locationDep) {

@@ -1,0 +1,17 @@
+create table Department(
+	id_dep serial primary key,
+	name_dep varchar(100) not null,
+	ubi_dep varchar(100) not null
+);
+
+create table Employee(
+	id_emp serial primary key,
+	dni_emp integer not null,
+	name_emp varchar(100) not null,
+	salary decimal not null,
+	phone_emp integer not null,
+	id_dep integer not null,
+	boss_emp varchar(50) not null,
+	FOREIGN KEY(id_dep) REFERENCES Department(id_dep)
+);
+
