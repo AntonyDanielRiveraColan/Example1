@@ -1,19 +1,15 @@
-package com.example.demo.Service.Impl;
+package com.example.demo.service.impl;
 
-import com.example.demo.Model.Department;
-import com.example.demo.Model.Employee;
-import com.example.demo.Repository.EmployeeRepository2;
+import com.example.demo.model.Employee;
+import com.example.demo.repository.EmployeeRepository2;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.given;
@@ -48,7 +44,7 @@ public class EmployeeImplTest {
 
     @Test
     public void deleteEmployee() {
-        given(employeeRepository.findById(1)).willReturn(Optional.of(new Employee()));
+        employeeRepository.findById(1);
         employeeService.deleteEmployee(1);
     }
 }

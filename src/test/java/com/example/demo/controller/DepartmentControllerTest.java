@@ -1,13 +1,12 @@
-package com.example.demo.Controller;
+package com.example.demo.controller;
 
-import com.example.demo.Model.Department;
-import com.example.demo.Service.DepartmentService;
+import com.example.demo.model.Department;
+import com.example.demo.service.DepartmentService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -39,8 +38,8 @@ public class DepartmentControllerTest {
         given(service.getAllDepartment()).willReturn(list);
 
         this.mvc.perform(get("/departmentApi/v1/read"))
-                .andExpect(status().isOk())
-                .andExpect(content().json("[]"));
+            .andExpect(status().isOk())
+            .andExpect(content().json("[]"));
 
     }
 
@@ -50,9 +49,9 @@ public class DepartmentControllerTest {
         service.addDepartment(new Department());
 
         this.mvc.perform(post("/departmentApi/v1/create/")
-        .contentType(MediaType.APPLICATION_JSON)
-        .content(asJsonString(new Department())))
-                .andExpect(status().isCreated());
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(asJsonString(new Department())))
+            .andExpect(status().isCreated());
 
     }
 
@@ -61,9 +60,9 @@ public class DepartmentControllerTest {
         Department updatedDepartment = new Department();
 
         this.mvc.perform(put("/departmentApi/v1/update/")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(updatedDepartment)))
-                .andExpect(status().isOk());
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(asJsonString(updatedDepartment)))
+            .andExpect(status().isOk());
 
     }
 
@@ -72,8 +71,9 @@ public class DepartmentControllerTest {
 
         Department department = new Department();
         department.setIdDep(4);
-        this.mvc.perform(MockMvcRequestBuilders.delete("/departmentApi/v1/delete/{id}",department.getIdDep()))
-                .andExpect(status().isOk());
+        this.mvc.perform(
+            MockMvcRequestBuilders.delete("/departmentApi/v1/delete/{id}", department.getIdDep()))
+            .andExpect(status().isOk());
 
 
     }

@@ -1,9 +1,7 @@
-package com.example.demo.Service.Impl;
+package com.example.demo.service.impl;
 
-import com.example.demo.Model.Department;
-import com.example.demo.Model.Employee;
-import com.example.demo.Repository.DepartmentRepository2;
-import com.example.demo.Repository.EmployeeRepository2;
+import com.example.demo.model.Department;
+import com.example.demo.repository.DepartmentRepository2;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -12,7 +10,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.given;
@@ -48,7 +45,7 @@ public class DepartmentImplTest {
     @Test
     public void deleteDepartment() {
 
-        given(departmentRepository.findById(1)).willReturn(Optional.of(new Department()));
+        departmentRepository.findById(1);
         departmentService.deleteDepartment(1);
 
     }

@@ -1,4 +1,4 @@
-package com.example.demo.Utility;
+package com.example.demo.utility;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +11,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfiguration {
+
+  /**
+   * Investigar el siguiente metodo y que es lo que realiza.
+   * @return retorna un objeto
+   */
 
   public Docket documentation() {
     return new Docket(DocumentationType.SWAGGER_2).select()
