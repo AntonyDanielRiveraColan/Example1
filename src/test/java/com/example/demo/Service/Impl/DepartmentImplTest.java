@@ -12,6 +12,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.given;
@@ -46,5 +47,9 @@ public class DepartmentImplTest {
 
     @Test
     public void deleteDepartment() {
+
+        given(departmentRepository.findById(1)).willReturn(Optional.of(new Department()));
+        departmentService.deleteDepartment(1);
+
     }
 }
