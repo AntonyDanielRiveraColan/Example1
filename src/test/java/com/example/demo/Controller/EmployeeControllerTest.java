@@ -1,13 +1,14 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Model.Department;
+import com.example.demo.Model.Employee;
 import com.example.demo.Service.DepartmentService;
+import com.example.demo.Service.EmployeeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -17,65 +18,59 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(DepartmentController.class)
-public class DepartmentControllerTest {
+@WebMvcTest(EmployeeController.class)
+public class EmployeeControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
     @MockBean
-    private DepartmentService service;
+    private EmployeeService service;
 
     @Test
-    public void getAllDepartment() throws Exception {
+    public void getAllEmployee() throws Exception {
+        List<Employee> list = new ArrayList<>();
+        given(service.getAllEmployee()).willReturn(list);
 
-        List<Department> list = new ArrayList<>();
-        given(service.getAllDepartment()).willReturn(list);
-
-        this.mvc.perform(get("/departmentApi/v1/read"))
+        this.mvc.perform(get("/employeeApi/v1/read"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[]"));
-
     }
 
     @Test
-    public void addDepartment() throws Exception {
+    public void addEmployee() throws Exception {
+        service.addEmployee(new Employee());
 
-        service.addDepartment(new Department());
-
-        this.mvc.perform(post("/departmentApi/v1/create/")
-        .contentType(MediaType.APPLICATION_JSON)
-        .content(asJsonString(new Department())))
-                .andExpect(status().isCreated());
-
-    }
-
-    @Test
-    public void udpdateDepartment() throws Exception {
-        Department updatedDepartment = new Department();
-
-        this.mvc.perform(put("/departmentApi/v1/update/")
+        this.mvc.perform(post("/employeeApi/v1/create/")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(updatedDepartment)))
+                .content(asJsonString(new Employee())))
+                .andExpect(status().isCreated());
+    }
+
+    @Test
+    public void udpdateEmployee() throws Exception {
+        Employee updateEmployee = new Employee();
+
+        this.mvc.perform(put("/employeeApi/v1/update/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(updateEmployee)))
                 .andExpect(status().isOk());
 
     }
 
     @Test
-    public void deleteDepartment() throws Exception {
-
-        Department department = new Department();
-        department.setIdDep(4);
-        this.mvc.perform(MockMvcRequestBuilders.delete("/departmentApi/v1/delete/{id}",department.getIdDep()))
+    public void deleteEmployee() throws Exception {
+        Employee employee = new Employee();
+        employee.setIdDep(4);
+        this.mvc.perform(MockMvcRequestBuilders.delete("/employeeApi/v1/delete/{id}",employee.getIdDep()))
                 .andExpect(status().isOk());
-
-
     }
 
     public static String asJsonString(Object object) {
@@ -85,4 +80,5 @@ public class DepartmentControllerTest {
             throw new RuntimeException(e);
         }
     }
+
 }
