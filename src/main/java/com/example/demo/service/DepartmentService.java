@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface DepartmentService {
 
+  /**Aqui se declaran los metodos para su posterior implementacion.*/
+
   public List<Department> getAllDepartment();
 
 

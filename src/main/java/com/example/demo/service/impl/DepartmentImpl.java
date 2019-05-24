@@ -9,12 +9,15 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@Service /** Anotación que debe de ser empleada para la capa de servicios y
+            logica de negocio. */
 
+@Transactional /**  Define el alcance de una sola transacción de base de datos.
+                    Esta ocurre dentro del alcance de un contexto de persistencia .*/
 
-
-@Service
-@Transactional
 public class DepartmentImpl  implements DepartmentService {
+
+  /**Aqui se implementan los metodos declarados en la interface Service.*/
 
   @Autowired
   DepartmentRepository2 departmentRepository;
