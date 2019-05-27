@@ -12,7 +12,7 @@ import lombok.Data;
 
 @Entity
 @Data /** Esta notacion crea los get,set,ToString,EqualsAndHashCode */
-@Table(name = "department") /**Para indicarle a la clase con que tabla se comunicara */
+@Table(name = "department") /**Para indicarle a la clase con que tabla se comunica */
 public class Department {
 
   @Id

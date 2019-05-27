@@ -10,6 +10,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
+/**
+ * Usar version de swager 1.5.14 swagger anotation swagger model
+ * http://localhost:8080/swagger-ui.html#/
+ * @Api es la notacion que se utiliza para nombrar en swagger a una clase controlador
+ */
 public class SwaggerConfiguration {
 
   /**

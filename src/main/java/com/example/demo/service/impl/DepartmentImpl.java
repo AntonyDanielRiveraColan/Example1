@@ -30,7 +30,6 @@ public class DepartmentImpl  implements DepartmentService {
   @Override
   public void addDepartment(Department obj) {
     departmentRepository.save(obj);
-
   }
 
   @Override

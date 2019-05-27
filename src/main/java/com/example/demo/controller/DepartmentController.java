@@ -21,18 +21,18 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
+/**  la sgt notacion,automaticamente publica como un  Spring REST Service a la clase.*/
 @RestController
+
+/** La siguiente notacion nos redirecciona  a un conjunto de  formularios apollado de la
+ * notacion @GetMapping */
 @RequestMapping("/departmentApi/v1")
-/**
- * Usar version de swager 1.5.14 swagger anotation swagger model http://localhost:8080/swagger-ui.html#/
- * @Api es la notacion que se utiliza para nombrar en swagger a una clase controlador
- */
-@Api(tags = "CRUD de Department")
+
+@Api(tags = "CRUD de Department") /** Apoya la documentacion del swagger nombra a la clase*/
 public class DepartmentController {
 
   /**
-   * Lo que hace un autowired es buscar un objeto manejado (beans) que implementen determinada
+   * La sgt notacion busca objeto manejado (beans) que implemente determinada
    * interfaz para hacer referencia a él. De esta manera no es neceario crear una instancia nueva
    * del objeto cada vez que se necesite la funcionalidad de determinada clase
    */
@@ -40,13 +40,12 @@ public class DepartmentController {
   DepartmentService departmentService;
 
   /**
-   * Metodo para listar departments. @ApiOperation es la notacion que se utiliza para nombrar
-   * en swagger a una metodo que realiza una operacion
+   * La sgt notacion se utiliza para nombrar en swagger.
+   * A una metodo que realiza una operacion determinada
    */
-
   @ApiOperation("Retorna una lista de Department")
   @GetMapping("/")
-  @ResponseStatus(HttpStatus.OK)
+  @ResponseStatus(HttpStatus.OK) /** Esta notacion indica el mensaje de estado esperado*/
   public List<Department> getAllDepartment() {
     return departmentService.getAllDepartment();
   }
